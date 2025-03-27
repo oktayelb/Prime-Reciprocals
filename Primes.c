@@ -23,12 +23,19 @@ int isPrime(int k)
 
 
 // function which gives nth prime
+// if nth prime is not in the primes array
+// simply get the prime before and  count up
 int nThPrime(int n)
 {
     int temp = primes[n];
     if(temp != 0) return temp;
+
+
 	int i=primes[n-1]+2;
-	while(!isPrime(i)) i+=2;
+
+	while(!isPrime(i))
+        i+=2;
+
 	primes[n] = i;
 	return i;
 }
@@ -36,28 +43,30 @@ int nThPrime(int n)
 
 double e(int x)
 {
-    if(x<=1)
-		return  x*0.5;
+    if(x<=0)
+		return  0;
+    if(x == 1)
+		return  0.5;
 
-    double reciprocal = (1.0/nThPrime(x));
-    double temp = arr[x-1];
-    if(temp!= 0)
-        return arr[x] = (temp*(1-reciprocal)) + reciprocal;
-
-	else
-        return (e(x-1)*(1-reciprocal)) + reciprocal;
+    double reciprocal = (1.0/nThPrime(x));  // 1/p_n
+    double temp = arr[x-1];                 // E_(n-1)
+    arr[x] = (temp*(1-reciprocal)) + reciprocal;
+    return arr[x];
 
 
 }
 int main()
 {
-    arr[1]   = 0;
-    primes[1] =2;
-    primes[2] =3;
-    primes[3] =5;
+    arr[0]    = 0;
+    arr[1]    = 0.5;
+    arr[2]    = 2/3;
+    primes[1] = 2;
+    primes[2] = 3;
+    primes[3] = 5;
 
-    for(int i = 1;  i<GLOB; i++)
+    for(int i = 1;  i<GLOB; i++){
 	printf("%f\n",e(i));
 
+    }
 	return 0;
 }

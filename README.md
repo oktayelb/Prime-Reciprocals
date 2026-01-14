@@ -1,4 +1,4 @@
-### Rigorous Definition of $E(n)$
+### Rigorous Definition of What the Code Calculates
 
 Let $P$ be the ordered set of prime numbers, where $p_i$ denotes the $i$-th prime ($p_1=2, p_2=3, \dots$).
 
@@ -40,3 +40,5 @@ E(n+1) = E(n)\left(1 - \frac{1}{p_{n+1}}\right) + \frac{1}{p_{n+1}}
 $$
 
 Where $E(1) = 1/2$. Using this approach, and implementing dynamic programming solutions, I have found that $E(80,000,000) \approx 0.973517$.
+
+This code was written to test and see that  as n gets bigger, the value  $E(n)$ approaches to 1.
